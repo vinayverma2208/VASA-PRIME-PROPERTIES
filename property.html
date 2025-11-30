@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VASA PRIME PROPERTIES</title>
+  <link rel="stylesheet" href="property.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&family=Libertinus+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+AU+QLD:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Sirin+Stencil&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+ <!-- 🔹 Navbar -->
+<nav id="navbar">
+  <div id="logo">
+    <img src="IMG/vasaproperty-removebg-preview.png" alt="VASA PROPERTIES">
+  </div>
+  <ul>
+    <li class="item"><a href="#home">Home</a></li>
+    <li class="item"><a href="#services-container">Our Services</a></li>
+    <li class="item"><a href="#Contact-us">Contact Us</a></li>
+    <li class="item"><a href="#about-us">About Us</a></li>
+  </ul>
+
+  <!--  Favourites + Saved Buttons -->
+  <div class="fav-saved-btns">
+  <a href="fav-saved.html"> Favorites</a>
+  <a href="fav-saved.html"> Saved</a>
+  <a href="login.html" class="login-btn" id="loginLink">Login / Sign Up</a>
+
+  <!-- 👇 Welcome and Logout will appear dynamically -->
+  <span id="welcomeUser" style="color: white; font-weight: 600; margin-left: 15px;"></span>
+
+
+</div>
+
+</nav>
+
+  <!-- 🔹 Home Section -->
+  <section id="home">
+    <h1 class="h-primary">Welcome to VASA PRIME PROPERTIES</h1>
+    <h3>Your Trusted Partner in Property Sales & Purchases</h3>
+    <p>
+      At Vasa Properties, we believe real estate isn’t just about buildings — it’s about people,
+      dreams, and opportunities. Whether you’re looking to buy your perfect home, sell your property
+      for the best price, or invest smartly, our dedicated team is here to guide you every step of the way.
+    </p>
+  </section>
+
+  <!-- 🔹 Services -->
+  <section id="services-container">
+    <h1 class="h-primary-center">Our Services</h1>
+
+    <div id="services">
+      <div class="box">
+        <a href="sale.html" style="text-decoration: none; color: inherit;">
+          <img src="IMG/sale.png" alt="Property Sale">
+          <h2 class="h-secondary-center">Property Sale</h2>
+          <p class="text">
+            Looking to sell your property? At Vasa Prime Properties, we offer comprehensive services
+            to ensure you get the best value for your home. Our experienced agents will guide you
+            through every step...
+          </p>
+        </a>
+      </div>
+
+      <div class="box">
+        <a href="buy.html" style="text-decoration: none; color: inherit;">
+          <img src="IMG/buy.png" alt="Property Buy">
+          <h2 class="h-secondary-center">Property Buy</h2>
+          <p class="text">
+            Searching for your dream home or a lucrative investment property? Vasa Prime Properties
+            is here to help you find the perfect match. Our extensive listings and knowledgeable
+            agents will assist you in navigating the market...
+          </p>
+        </a>
+      </div>
+
+      <div class="box">
+        <a href="rent.html" style="text-decoration: none; color: inherit;">
+          <img src="IMG/rent-removebg-preview.png" alt="Property Rent">
+          <h2 class="h-secondary-center">Property Rent</h2>
+          <p class="text">
+            Need a rental home or want to rent out your property? Vasa Prime Properties connects
+            tenants and landlords seamlessly. Explore verified rental listings or list your space
+            with us for quick results...
+          </p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 Contact -->
+  <section id="Contact-us">
+    <div class="contact-container">
+      <h2>Contact Us - Vasa Prime Properties</h2>
+      <form action="submit_form.php" method="post">
+        <div class="form-group">
+          <label for="name">Full Name *</label>
+          <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="state">State *</label>
+          <input type="text" id="state" name="state" placeholder="Enter your state" required>
+        </div>
+
+        <div class="form-group">
+          <label for="city">City *</label>
+          <input type="text" id="city" name="city" placeholder="Enter your city" required>
+        </div>
+
+        <div class="form-group">
+          <label for="details">House Details *</label>
+          <textarea id="details" name="details"
+            placeholder="Describe your house or what kind of property you are looking for" required></textarea>
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- 🔹 About Us -->
+  <section id="about-us">
+    <div class="about-container">
+      <header>
+        <h1>About Vasa Prime Properties</h1>
+        <p>Your Trusted Partner in Real Estate</p>
+      </header>
+
+      <div class="container">
+        <section>
+          <h2>Who We Are</h2>
+          <p>
+            At <strong>Vasa Prime Properties</strong>, we specialize in the <strong>sale and purchase of
+              residential and commercial properties</strong>. With years of experience, we have built a reputation
+            for professionalism, trust, and excellence in every transaction we manage.
+          </p>
+        </section>
+
+        <section>
+          <h2>Our Mission</h2>
+          <p>
+            Our mission is to make property buying and selling seamless and transparent.
+            Whether you're purchasing your first home or expanding your investment portfolio,
+            Vasa Prime Properties is here to guide you through every step with expert advice and integrity.
+          </p>
+        </section>
+
+        <section>
+          <h2>Why Choose Us</h2>
+          <ul>
+            <li>Experienced and certified real estate professionals</li>
+            <li>Comprehensive property listings and market insights</li>
+            <li>Personalized client service and support</li>
+            <li>Secure and transparent transactions</li>
+          </ul>
+        </section>
+
+        <section class="reviews">
+          <h2>Client Reviews</h2>
+          <div class="review">
+            <p><strong>⭐️⭐️⭐️⭐️⭐️ (5/5)</strong></p>
+            <p>"Vasa Prime Properties helped me find my dream home quickly and easily.
+              Their service was top-notch from start to finish!" — <em>Sarah Khan</em></p>
+          </div>
+          <div class="review">
+            <p><strong>⭐️⭐️⭐️⭐️⭐️ (5/5)</strong></p>
+            <p>"Professional and reliable! I sold my property at a great price thanks to their
+              expertise." — <em>Ali Raza</em></p>
+          </div>
+          <div class="review">
+            <p><strong>⭐️⭐️⭐️⭐️⭐️ (5/5)</strong></p>
+            <p>"The best real estate agency I’ve worked with.
+              Honest communication and smooth transactions." — <em>Maria Ahmed</em></p>
+          </div>
+        </section>
+      </div>
+
+      <footer>
+        <p>&copy; 2025 Vasa Prime Properties. All rights reserved.</p>
+      </footer>
+    </div>
+  </section>
+
+  <script src="property.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,266 @@
+/* ---------------------------------------------------
+   GLOBAL & BRAND COLOR THEME
+--------------------------------------------------- */
+:root {
+  --bg-dark: #1A1A2E;
+  --bg-dark2: #16213E;
+  --bg-blue: #0F3460;
+  --accent: #E94560;
+  --text-light: #ffffff;
+  --text-muted: #cccccc;
+  --box-bg: #f4f4f4;
+  --shadow: rgba(0, 0, 0, 0.2);
+  font-family: "Ubuntu", sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-dark2);
+  color: var(--text-light);
+  scroll-behavior: smooth;
+}
+
+/* ---------------------------------------------------
+   NAVBAR (Modern Glassy Premium Style)
+--------------------------------------------------- */
+#navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 40px;
+  background: rgba(26, 26, 46, 0.85);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 10px var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+#navbar ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+#navbar ul li a {
+  text-decoration: none;
+  color: var(--text-light);
+  font-size: 17px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+#navbar ul li a:hover {
+  color: var(--accent);
+}
+
+#logo img {
+  width: 140px;
+}
+
+/* Login buttons */
+.fav-saved-btns a,
+#loginLink {
+  margin-left: 15px;
+  text-decoration: none;
+  color: var(--accent);
+  background: var(--bg-dark);
+  padding: 8px 15px;
+  border-radius: 6px;
+  border: 1px solid var(--accent);
+  transition: 0.3s ease;
+  font-weight: 600;
+}
+
+.fav-saved-btns a:hover,
+#loginLink:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ---------------------------------------------------
+   HOME SECTION
+--------------------------------------------------- */
+#home {
+  padding: 120px 60px;
+  background: linear-gradient(135deg, #0F3460, #16213E);
+  color: var(--text-light);
+  text-align: center;
+}
+
+#home h1 {
+  font-size: 46px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+#home h3 {
+  margin-top: -15px;
+  font-size: 22px;
+  color: var(--accent);
+}
+
+#home p {
+  max-width: 850px;
+  margin: 20px auto 0;
+  line-height: 1.6;
+  color: var(--text-muted);
+  font-size: 17px;
+}
+
+/* ---------------------------------------------------
+   SERVICES SECTION
+--------------------------------------------------- */
+#services-container {
+  padding: 80px 40px;
+  background: var(--bg-dark2);
+  text-align: center;
+}
+
+.h-primary-center {
+  font-size: 38px;
+  margin-bottom: 20px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+#services {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.box {
+  background: var(--bg-dark);
+  padding: 25px;
+  border-radius: 12px;
+  width: 330px;
+  box-shadow: 0 6px 14px var(--shadow);
+  transition: 0.3s ease;
+  color: var(--text-light);
+}
+
+.box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px var(--shadow);
+}
+
+.box img {
+  width: 100px;
+  margin-bottom: 15px;
+}
+
+.h-secondary-center {
+  color: var(--accent);
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.text {
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ---------------------------------------------------
+   CONTACT FORM
+--------------------------------------------------- */
+#Contact-us {
+  padding: 80px 40px;
+  background: var(--bg-dark);
+  color: var(--text-light);
+}
+
+.contact-container {
+  max-width: 700px;
+  margin: auto;
+  background: var(--bg-dark2);
+  padding: 35px;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px var(--shadow);
+}
+
+.contact-container h2 {
+  color: var(--accent);
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  background: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ff3350;
+}
+
+/* ---------------------------------------------------
+   ABOUT US SECTION
+--------------------------------------------------- */
+#about-us {
+  padding: 80px 40px;
+  background: var(--bg-dark2);
+}
+
+.about-container h1 {
+  text-align: center;
+  color: var(--accent);
+  font-size: 36px;
+}
+
+.about-container p,
+.about-container ul {
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.about-container ul li {
+  margin: 8px 0;
+}
+
+.reviews {
+  margin-top: 40px;
+}
+
+.review {
+  background: var(--bg-dark);
+  padding: 18px;
+  border-left: 4px solid var(--accent);
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+/* ---------------------------------------------------
+   FOOTER
+--------------------------------------------------- */
+footer {
+  padding: 25px;
+  text-align: center;
+  color: var(--text-muted);
+  background: var(--bg-dark);
+  margin-top: 30px;
+}

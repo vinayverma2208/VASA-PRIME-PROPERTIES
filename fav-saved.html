@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Favourites & Saved | VASA PRIME PROPERTIES</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      background-color: #000080;
+      color: white;
+      scroll-behavior: smooth;
+    }
+
+   /* ===========================
+   NAVBAR (glassy + professional)
+   =========================== */
+nav {
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:14px 28px;
+  background:var(--nav-bg);
+  box-shadow: 0 6px 18px rgba(223, 228, 236);
+  position:sticky;
+  top:0;
+  z-index:1100;
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--glass-border);
+
+}
+
+nav .logo img{height:48px; display:block;}
+
+nav ul{
+  display:flex;
+  gap:22px;
+  margin:0;
+  padding:0;
+  list-style:none;
+  align-items:center;
+  color: white;
+}
+
+nav ul li a{
+  text-decoration:none;
+  color:var(--text);
+  font-weight:600;
+  font-size:15px;
+  padding:8px 6px;
+  border-radius:8px;
+  transition: color var(--transition), background var(--transition), transform var(--transition);
+}
+
+nav ul li a:hover{
+  color:var(--primary-600);
+  transform: translateY(-2px);
+  color: #87CEEB;
+}
+    /* Header */
+    header {
+      text-align: center;
+      background: linear-gradient(135deg,#00008B);
+      color: white;
+      padding: 70px 20px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .tab {
+      padding: 12px 25px;
+      background: sk;
+      border-radius: 30px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.3s;
+      border: 2px solid transparent;
+    }
+
+    .tab.active {
+      background: linear-gradient(135deg,#191970,#00008B);
+      color: #e73156;
+      border-color: #e73156;
+    }
+
+    /* Container */
+    .property-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 20px;
+      padding: 20px;
+    }
+
+    .property-card {
+      width: 300px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: 0.3s;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .property-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .property-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .property-card h3 {
+      padding: 10px 15px 0;
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    .property-card p {
+      padding: 0 15px;
+      color: #555;
+      font-size: 0.95rem;
+    }
+
+    .property-card .price {
+      font-weight: bold;
+      color: #e73156;
+      margin-top: 5px;
+    }
+
+    .btn-container {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 15px 15px;
+    }
+
+    .remove-btn, .whatsapp-btn {
+      border: none;
+      padding: 10px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .remove-btn {
+      background: #e73156;
+      color: white;
+    }
+
+    .remove-btn:hover {
+      background: #c02747;
+    }
+
+    .whatsapp-btn {
+      background: #25d366;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+    }
+
+    .whatsapp-btn:hover {
+      background: #1ebd59;
+    }
+
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      background: #222;
+      color: white;
+      padding: 20px;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .empty-msg {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #666;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div id="logo">
+      <img src="IMG/vasaproperty-removebg-preview.png" alt="VASA PROPERTIES" height="50" />
+    </div>
+    <ul>
+      <li><a href="property.html#home">Home</a></li>
+      <li><a href="property.html#services-container">Our Services</a></li>
+      <li><a href="property.html#contact-us">Contact Us</a></li>
+      <li><a href="property.html#about-us">About Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <header>
+    <h1>🏡 Your Favourite & Saved Properties</h1>
+    <p>All your liked and saved properties in one place.</p>
+  </header>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <div class="tab active" id="favTab"> Favourites</div>
+    <div class="tab" id="savedTab"> Saved</div>
+  </div>
+
+  <!-- Property Container -->
+  <section>
+    <div class="property-container" id="propertyContainer"></div>
+    <p class="empty-msg" id="emptyMsg">No properties yet! Go to Rent page and add some </p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Vasa Prime Properties. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const propertyContainer = document.getElementById("propertyContainer");
+    const emptyMsg = document.getElementById("emptyMsg");
+    const favTab = document.getElementById("favTab");
+    const savedTab = document.getElementById("savedTab");
+
+    const favourites = JSON.parse(localStorage.getItem("favourites")) || [];
+    const saved = JSON.parse(localStorage.getItem("saved")) || [];
+
+    let activeTab = "favourites";
+
+    function renderProperties() {
+      propertyContainer.innerHTML = "";
+      let data = activeTab === "favourites" ? favourites : saved;
+      emptyMsg.style.display = data.length === 0 ? "block" : "none";
+
+      data.forEach((item, index) => {
+        const card = document.createElement("div");
+        card.classList.add("property-card");
+        card.innerHTML = `
+          <img src="${item.img}" alt="${item.title}" />
+          <h3>${item.title}</h3>
+          <p class="price">${item.price}</p>
+          <p>${item.desc}</p>
+          <div class="btn-container">
+            <button class="remove-btn" data-index="${index}">Remove</button>
+            <a href="https://wa.me/${item.contact?.replace(/\\D/g,'')}?text=Hi,%20I'm%20interested%20in%20${encodeURIComponent(item.title)}" target="_blank" class="whatsapp-btn">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="20" /> Chat
+            </a>
+          </div>
+        `;
+        propertyContainer.appendChild(card);
+      });
+
+      document.querySelectorAll(".remove-btn").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          const index = e.target.dataset.index;
+          if (activeTab === "favourites") {
+            favourites.splice(index, 1);
+            localStorage.setItem("favourites", JSON.stringify(favourites));
+          } else {
+            saved.splice(index, 1);
+            localStorage.setItem("saved", JSON.stringify(saved));
+          }
+          renderProperties();
+        });
+      });
+    }
+
+    favTab.addEventListener("click", () => {
+      favTab.classList.add("active");
+      savedTab.classList.remove("active");
+      activeTab = "favourites";
+      renderProperties();
+    });
+
+    savedTab.addEventListener("click", () => {
+      savedTab.classList.add("active");
+      favTab.classList.remove("active");
+      activeTab = "saved";
+      renderProperties();
+    });
+
+    renderProperties();
+    
+  </script>
+</body>
+</html>

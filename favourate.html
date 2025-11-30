@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Favourites | VASA PRIME PROPERTIES</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      background-color: #fafafa;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #e73156;
+    }
+
+    /* Hero */
+    header {
+      text-align: center;
+      background: linear-gradient(135deg, #e73156, #f77c9c);
+      color: white;
+      padding: 70px 20px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+    }
+
+    /* Container */
+    .property-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+      padding: 20px;
+    }
+
+    .property-card {
+      width: 300px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: 0.3s;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .property-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .property-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .property-card h3 {
+      padding: 10px 15px 0;
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    .property-card p {
+      padding: 0 15px;
+      color: #555;
+      font-size: 0.95rem;
+    }
+
+    .property-card .price {
+      font-weight: bold;
+      color: #e73156;
+      margin-top: 5px;
+    }
+
+    .btn-container {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 15px 15px;
+    }
+
+    .remove-btn, .whatsapp-btn {
+      border: none;
+      padding: 10px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .remove-btn {
+      background: #e73156;
+      color: white;
+    }
+    .remove-btn:hover {
+      background: #c02747;
+    }
+
+    .whatsapp-btn {
+      background: #25d366;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+    }
+    .whatsapp-btn:hover {
+      background: #1ebd59;
+    }
+
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      background: #222;
+      color: white;
+      padding: 20px;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .empty-msg {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #666;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div id="logo">
+      <img src="IMG/vasaproperty-removebg-preview.png" alt="VASA PROPERTIES" height="50" />
+    </div>
+    <ul>
+      <li><a href="property.html#home">Home</a></li>
+      <li><a href="property.html#services-container">Our Services</a></li>
+      <li><a href="property.html#contact-us">Contact Us</a></li>
+      <li><a href="property.html#about-us">About Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <header>
+    <h1>❤️ Your Favourite Properties</h1>
+    <p>All properties you marked as favourite are listed below.</p>
+  </header>
+
+  <!-- Properties -->
+  <section>
+    <div class="property-container" id="favContainer"></div>
+    <p class="empty-msg" id="emptyMsg">No favourites yet! Go to Rent page and add some ❤️</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Vasa Prime Properties. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const container = document.getElementById("favContainer");
+    const emptyMsg = document.getElementById("emptyMsg");
+
+    const favourites = JSON.parse(localStorage.getItem("favourites")) || [];
+
+    function renderFavourites() {
+      container.innerHTML = "";
+      if (favourites.length === 0) {
+        emptyMsg.style.display = "block";
+        return;
+      } else {
+        emptyMsg.style.display = "none";
+      }
+
+      favourites.forEach((item, index) => {
+        const card = document.createElement("div");
+        card.classList.add("property-card");
+        card.innerHTML = `
+          <img src="${item.img}" alt="${item.title}" />
+          <h3>${item.title}</h3>
+          <p class="price">${item.price}</p>
+          <p>${item.desc}</p>
+          <div class="btn-container">
+            <button class="remove-btn" data-index="${index}">Remove</button>
+            <a href="https://wa.me/${item.contact.replace(/\D/g,'')}?text=Hi,%20I'm%20interested%20in%20${encodeURIComponent(item.title)}" target="_blank" class="whatsapp-btn">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="20" /> Chat
+            </a>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      // Remove Functionality
+      document.querySelectorAll(".remove-btn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          const index = e.target.dataset.index;
+          favourites.splice(index, 1);
+          localStorage.setItem("favourites", JSON.stringify(favourites));
+          renderFavourites();
+        });
+      });
+    }
+
+    renderFavourites();
+    
+  </script>
+
+</body>
+</html>

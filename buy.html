@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buy Properties | VASA PRIME PROPERTIES</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* property.css
+   Blue Professional Real Estate UI
+   Includes dark-mode variables, responsive rules, sticky filter bar, animations.
+*/
+
+/* ===========================
+   THEME VARIABLES
+   =========================== */
+:root{
+  --bg: #f5f8fb;
+  --card-bg: #ffffff;
+  --nav-bg: #ffffff;
+  --primary: #0f6fd6;        /* blue */
+  --primary-600: #0b57b0;
+  --muted: #6b7280;
+  --text: #0f1724;
+  --accent: #0f6fd6;
+  --shadow: 0 8px 24px rgba(13,24,40,0.08);
+  --glass: rgba(255,255,255,0.6);
+  --radius: 14px;
+  --glass-border: rgba(15,111,214,0.08);
+  --transition: 200ms cubic-bezier(.2,.8,.2,1);
+  --max-width: 1200px;
+}
+
+/* DARK MODE */
+:root.dark {
+  --bg: #071028;
+  --card-bg: #071a33;
+  --nav-bg: rgba(7,26,51,0.85);
+  --primary: #2da3ff;
+  --primary-600: #1190ff;
+  --muted: #9fb3c9;
+  --text: #e6f2ff;
+  --accent: #2da3ff;
+  --shadow: 0 10px 30px rgba(0,0,0,0.45);
+  --glass: rgba(255,255,255,0.03);
+  --glass-border: rgba(255,255,255,0.04);
+}
+
+/* ===========================
+   GLOBAL
+   =========================== */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+  transition: background var(--transition), color var(--transition);
+}
+
+/* center container helper */
+.container {
+  max-width: var(--max-width);
+  margin: 28px auto;
+  padding: 0 20px;
+}
+
+/* ===========================
+   NAVBAR (glassy + professional)
+   =========================== */
+nav {
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:14px 28px;
+  background:var(--nav-bg);
+  box-shadow: 0 6px 18px rgba(6,18,40,0.06);
+  position:sticky;
+  top:0;
+  z-index:1100;
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--glass-border);
+  transition: box-shadow 220ms ease, background 220ms ease;
+}
+
+nav .logo img{height:48px; display:block;}
+
+nav ul{
+  display:flex;
+  gap:22px;
+  margin:0;
+  padding:0;
+  list-style:none;
+  align-items:center;
+}
+
+nav ul li a{
+  text-decoration:none;
+  color:var(--text);
+  font-weight:600;
+  font-size:15px;
+  padding:8px 6px;
+  border-radius:8px;
+  transition: color var(--transition), background var(--transition), transform var(--transition);
+}
+
+nav ul li a:hover{
+  color:var(--primary-600);
+  transform: translateY(-2px);
+}
+
+/* right-side quick actions */
+.nav-actions{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+/* login / fav buttons */
+.action-btn {
+  background:transparent;
+  color:var(--primary);
+  border: 1px solid var(--primary);
+  padding:8px 12px;
+  border-radius:10px;
+  font-weight:600;
+  text-decoration:none;
+  cursor:pointer;
+  transition: all var(--transition);
+}
+
+.action-btn:hover{
+  background:var(--primary);
+  color:white;
+  box-shadow: 0 6px 18px rgba(15,111,214,0.18);
+  transform: translateY(-3px);
+}
+
+/* Dark mode toggle */
+.dark-toggle{
+  width:44px;
+  height:30px;
+  border-radius:999px;
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  padding:4px;
+  cursor:pointer;
+  border:1px solid var(--glass-border);
+  background:var(--glass);
+}
+.dark-toggle .dot{
+  width:20px;
+  height:20px;
+  background:var(--primary);
+  border-radius:50%;
+  transition: transform 220ms ease, background 220ms ease;
+}
+
+/* ===========================
+   HEADER HERO
+   =========================== */
+header{
+  padding:72px 0;
+  text-align:center;
+  background: linear-gradient(180deg, rgba(15,111,214,0.06), transparent 60%);
+}
+
+header .container{
+  padding-top:20px;
+  padding-bottom:20px;
+}
+
+header h1{
+  font-size:2.4rem;
+  margin:0 0 6px;
+  letter-spacing:-0.4px;
+  font-weight:700;
+}
+
+header p{
+  margin:0;
+  color:var(--muted);
+  font-size:1rem;
+}
+
+/* ===========================
+   MAIN CONTENT CARD
+   =========================== */
+.main-container{
+  max-width:var(--max-width);
+  margin:18px auto;
+  background:transparent;
+  padding: 0 20px 40px;
+}
+
+/* card wrapper */
+.panel{
+  background:var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding:22px;
+  transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+  border: 1px solid transparent;
+}
+
+/* ===========================
+   FILTER BAR (sticky)
+   =========================== */
+.filter-wrapper{
+  position: sticky;
+  top:76px; /* sits under navbar */
+  z-index:1050;
+  margin-bottom:20px;
+  display:flex;
+  justify-content:center;
+  padding:12px;
+  transition: box-shadow 180ms ease, transform 180ms ease;
+}
+
+.filter-wrapper.sticky-elevate{
+  box-shadow: 0 8px 30px rgba(6,18,40,0.08);
+  transform: translateY(-2px);
+}
+
+.filter-bar{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  width:100%;
+  max-width:1000px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.82));
+  padding:10px;
+  border-radius:12px;
+  border:1px solid var(--glass-border);
+}
+
+:root.dark .filter-bar{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+}
+
+.filter-bar input,
+.filter-bar select{
+  padding:10px 14px;
+  border-radius:10px;
+  border:1px solid #e6eefc;
+  outline:none;
+  font-size:15px;
+  min-width:160px;
+  transition: box-shadow var(--transition), border-color var(--transition), background var(--transition);
+}
+
+:root.dark .filter-bar input,
+:root.dark .filter-bar select {
+  border:1px solid rgba(255,255,255,0.04);
+  background: rgba(255,255,255,0.02);
+  color:var(--text);
+}
+
+.filter-bar input:focus,
+.filter-bar select:focus{
+  border-color: var(--primary);
+  box-shadow: 0 6px 16px rgba(15,111,214,0.08);
+}
+
+/* ===========================
+   PROPERTY GRID & CARDS
+   =========================== */
+.property-container{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap:22px;
+  margin-top:6px;
+}
+
+.property-card{
+  background: linear-gradient(180deg, var(--card-bg), transparent);
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow: 0 6px 18px rgba(11,24,50,0.06);
+  transition: transform 300ms cubic-bezier(.2,.9,.2,1), box-shadow 300ms;
+  border:1px solid transparent;
+  display:flex;
+  flex-direction:column;
+}
+
+/* entrance micro animation */
+.property-card { transform: translateY(6px); opacity: 0; animation: cardIn 420ms forwards; }
+.property-card:nth-child(1){ animation-delay: 40ms; }
+.property-card:nth-child(2){ animation-delay: 80ms; }
+.property-card:nth-child(3){ animation-delay: 120ms; }
+.property-card:nth-child(4){ animation-delay: 160ms; }
+.property-card:nth-child(5){ animation-delay: 200ms; }
+
+@keyframes cardIn {
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* hover */
+.property-card:hover{
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 18px 40px rgba(11,24,50,0.12);
+  border-color: var(--glass-border);
+}
+
+/* image */
+.property-card img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  display:block;
+  flex-shrink:0;
+}
+
+/* content */
+.card-body{
+  padding:14px 16px 18px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  flex:1;
+}
+
+.card-body h3{
+  margin:0;
+  font-size:1.06rem;
+  color:var(--text);
+  font-weight:700;
+}
+
+.card-body p.desc{
+  margin:0;
+  color:var(--muted);
+  font-size:0.95rem;
+}
+
+/* price row */
+.row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  margin-top:auto;
+}
+
+.price{
+  color:var(--primary);
+  font-weight:800;
+  font-size:1.05rem;
+}
+
+/* buttons */
+.btn-container{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  justify-content:flex-start;
+  padding:12px 16px;
+}
+
+.btn {
+  border: none;
+  background: transparent;
+  padding:8px 10px;
+  border-radius:8px;
+  font-weight:600;
+  cursor:pointer;
+  transition: all 180ms ease;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+
+.fav-btn{
+  background: linear-gradient(180deg, #fff, #fff);
+  border:1px solid rgba(231,49,86,0.06);
+  color:#e73156;
+  padding:8px 12px;
+}
+
+.fav-btn:hover{
+  background:var(--primary);
+  color:white;
+  transform:translateY(-3px);
+  box-shadow: 0 8px 20px rgba(15,111,214,0.12);
+}
+
+.save-btn{
+  background: linear-gradient(180deg,#f1f6ff,#dce7ff);
+  color:#114ecf;
+  border:1px solid rgba(37,117,252,0.06);
+  padding:8px 12px;
+}
+
+.save-btn:hover{
+  background: var(--primary-600);
+  color:white;
+  transform:translateY(-3px);
+  box-shadow: 0 8px 20px rgba(15,111,214,0.12);
+}
+
+/* whatsapp link styled as compact button */
+.whatsapp-btn{
+  margin-left:auto;
+  background:linear-gradient(180deg,#25d366,#1ebd59);
+  color:white;
+  padding:8px 10px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:700;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.whatsapp-btn:hover{
+  transform:translateY(-3px);
+  box-shadow: 0 8px 20px rgba(6,18,40,0.08);
+}
+
+/* ===========================
+   FOOTER
+   =========================== */
+footer{
+  margin-top:28px;
+  padding:22px 0;
+  text-align:center;
+  color:var(--muted);
+  font-size:0.95rem;
+}
+
+/* ===========================
+   SMALL SCREENS
+   =========================== */
+@media (max-width:900px){
+  nav{ padding:12px 16px; }
+  .container{ padding:0 14px; }
+  header{ padding:54px 10px; }
+  .filter-wrapper{ top:72px; padding:8px; }
+}
+
+@media (max-width:600px){
+  header h1{ font-size:1.6rem; }
+  .filter-bar{ flex-direction:column; gap:8px; padding:12px; border-radius:10px; }
+  .btn-container{ flex-wrap:wrap; gap:8px; }
+  .price{ font-size:0.98rem; }
+}
+
+/* small polish */
+a{color:inherit}
+
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div id="logo">
+      <img src="IMG/vasaproperty-removebg-preview.png" alt="VASA PROPERTIES" height="50" />
+    </div>
+    <ul>
+      <li><a href="property.html#home">Home</a></li>
+      <li><a href="property.html#services-container">Our Services</a></li>
+      <li><a href="property.html#Contact-us">Contact Us</a></li>
+      <li><a href="property.html#about-us">About Us</a></li>
+      <li><a href="fav-saved.html">Favourites / Saved</a></li>
+    </ul>
+  </nav>
+  
+  <header>
+    <h1>🏡 Buy Properties</h1>
+    <p>Find your dream home and save or favourite what you love!</p>
+  </header>
+
+  <div class="main-container">
+    <!-- 🔍 Search + Price Filter -->
+   <div class="filter-wrapper">
+  <div class="filter-bar">
+    <input type="text" id="searchBox" placeholder="Search by city or title...">
+    <select id="priceFilter">
+      <option value="all">All Prices</option>
+      <option value="50">Below ₹50 Lakh</option>
+      <option value="100">Below ₹1 Cr</option>
+      <option value="200">Below ₹2 Cr</option>
+    </select>
+  </div>
+</div>
+
+<!-- 🏘️ Property Cards -->
+<div class="property-container" id="buyContainer">
+
+  <div class="property-card" data-city="delhi">
+    <img src="IMG/buy1.jpg" alt="Delhi Apartment" />
+    <h3>3 BHK Apartment in Delhi</h3>
+    <p>Beautiful apartment located in South Delhi with modern amenities.</p>
+    <p class="price">₹95 Lakh</p>
+    <div class="btn-container">
+      <button class="btn fav-btn">Favourite</button>
+      <button class="btn save-btn">Save</button>
+   <a href="https://wa.me/919876543210" class="whatsapp-btn">chat on WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <div class="property-card" data-city="pune">
+    <img src="" alt="Pune Apartment" />
+    <h3>2 BHK Apartment in Pune</h3>
+    <p>Spacious apartment with excellent connectivity and security.</p>
+    <p class="price">₹75 Lakh</p>
+    <div class="btn-container">
+      <button class="btn fav-btn"> Favourite</button>
+      <button class="btn save-btn"> Save</button>
+      <a href="https://wa.me/919876543210" class="whatsapp-btn">chat on WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <div class="property-card" data-city="noida">
+    <img src="IMG/buy3.jpg" alt="Noida Villa" />
+    <h3>Luxury Villa in Noida</h3>
+    <p>Modern villa with private garden and swimming pool.</p>
+    <p class="price">₹1.8 Cr</p>
+    <div class="btn-container">
+      <button class="btn fav-btn">Favourite</button>
+      <button class="btn save-btn"> Save</button>
+     <a href="https://wa.me/919876543210" class="whatsapp-btn">chat on WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <div class="property-card" data-city="mumbai">
+    <img src="IMG/buy4.avif" alt="Mumbai Flat" />
+    <h3>3 BHK Sea View Apartment - Mumbai</h3>
+    <p>Luxury apartment in Andheri West with a breathtaking sea view.</p>
+    <p class="price">₹1.35 Cr</p>
+    <div class="btn-container">
+      <button class="btn fav-btn"> Favourite</button>
+      <button class="btn save-btn"> Save</button>
+   <a href="https://wa.me/919876543210" class="whatsapp-btn">chat on WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <div class="property-card" data-city="loni">
+    <img src="IMG/buy5.avif" alt="Loni House" />
+    <h3>2 BHK House in Loni</h3>
+    <p>Affordable independent house near schools and market area.</p>
+    <p class="price">₹45 Lakh</p>
+    <div class="btn-container">
+      <button class="btn fav-btn">Favourite</button>
+      <button class="btn save-btn"> Save</button>
+ <a href="https://wa.me/919876543210" class="whatsapp-btn">chat on WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <div class="property-card" data-city="lucknow">
+    <img src="IMG/buy6.avif" alt="Lucknow Villa" />
+    <h3>4 BHK Villa in Lucknow</h3>
+    <p>Spacious villa with modern interiors and large parking space.</p>
+    <p class="price">₹1.1 Cr</p>
+    <div class="btn-container">
+      <button class="btn fav-btn"> Favourite</button>
+      <button class="btn save-btn"> Save</button>
+  <a href="https://wa.me/919876543210" class="whatsapp-btn">chat on WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <div class="property-card" data-city="bangalore">
+    <img src="IMG/buy7.avif" alt="Bangalore Apartment" />
+    <h3>2 BHK Apartment in Bangalore</h3>
+    <p>Located in Whitefield with 24/7 security and clubhouse facilities.</p>
+    <p class="price">₹88 Lakh</p>
+    <div class="btn-container">
+      <button class="btn fav-btn"> Favourite</button>
+      <button class="btn save-btn">Save</button>
+ <a href="https://wa.me/919876543210" class="whatsapp-btn">chat on WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <div class="property-card" data-city="chandigarh">
+    <img src="IMG/buy8.avif" alt="Chandigarh Duplex" />
+    <h3>3 BHK Duplex in Chandigarh</h3>
+    <p>Fully furnished duplex with garden and parking space.</p>
+    <p class="price">₹1.25 Cr</p>
+    <div class="btn-container">
+      <button class="btn fav-btn"> Favourite</button>
+      <button class="btn save-btn"> Save</button>
+      <a href="https://wa.me/919876543210" class="whatsapp-btn">chat on WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <div class="property-card" data-city="agra">
+    <img src="IMG/buy9.avif" alt="Agra House" />
+    <h3>Independent House in Agra</h3>
+    <p>Newly constructed 3 BHK house near Tajganj area.</p>
+    <p class="price">₹65 Lakh</p>
+    <div class="btn-container">
+      <button class="btn fav-btn">Favourite</button>
+      <button class="btn save-btn"> Save</button>
+      <a href="https://wa.me/919876543210" class="whatsapp-btn">chat on WhatsApp
+        
+      </a>
+    </div>
+  </div>
+
+</div>
+
+
+  <footer>
+    <p>&copy; 2025 Vasa Prime Properties. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const favBtns = document.querySelectorAll(".fav-btn");
+    const saveBtns = document.querySelectorAll(".save-btn");
+
+    favBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const card = btn.closest(".property-card");
+        addToStorage("favourites", card);
+        btn.textContent = " Added";
+      });
+    });
+
+    saveBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const card = btn.closest(".property-card");
+        addToStorage("saved", card);
+        btn.textContent = "Saved";
+      });
+    });
+
+    function addToStorage(type, card) {
+      const data = {
+        img: card.querySelector("img").src,
+        title: card.querySelector("h3").innerText,
+        price: card.querySelector(".price").innerText,
+        desc: card.querySelector("p").innerText,
+        contact: "919876543210"
+      };
+      let list = JSON.parse(localStorage.getItem(type)) || [];
+      list.push(data);
+      localStorage.setItem(type, JSON.stringify(list));
+      alert(`${data.title} added to ${type}!`);
+    }
+
+    const searchBox = document.getElementById("searchBox");
+    const priceFilter = document.getElementById("priceFilter");
+    const properties = document.querySelectorAll(".property-card");
+
+    function filterProperties() {
+      const searchText = searchBox.value.toLowerCase();
+      const priceValue = priceFilter.value;
+
+      properties.forEach(card => {
+        const title = card.querySelector("h3").innerText.toLowerCase();
+        const priceText = card.querySelector(".price").innerText;
+        const priceNum = parseFloat(priceText.replace(/[₹, LakhCr]/g, "")) || 0;
+
+        let matchSearch = title.includes(searchText);
+        let matchPrice = true;
+
+        if (priceValue === "50") matchPrice = priceNum < 50;
+        else if (priceValue === "100") matchPrice = priceNum < 100;
+        else if (priceValue === "200") matchPrice = priceNum < 200;
+
+        if (matchSearch && matchPrice) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
+
+    searchBox.addEventListener("input", filterProperties);
+    priceFilter.addEventListener("change", filterProperties);
+
+/* property.js - UI helpers: dark mode toggle, sticky filter elevation */
+
+(function(){
+  // Elements (some pages might not have them — safe guards)
+  const html = document.documentElement;
+  const nav = document.querySelector('nav');
+  const filterWrapper = document.querySelector('.filter-wrapper');
+  const darkToggleBtn = (() => {
+    // create one if not present in nav
+    let d = document.querySelector('.dark-toggle');
+    if (!d && nav) {
+      d = document.createElement('button');
+      d.className = 'dark-toggle';
+      d.title = 'Toggle dark mode';
+      d.innerHTML = '<span class="dot"></span>';
+      // put it into a right-side container
+      const actions = document.createElement('div');
+      actions.className = 'nav-actions';
+      actions.appendChild(d);
+      nav.appendChild(actions);
+    }
+    return d;
+  })();
+
+  // Init theme from localStorage (default light)
+  const THEME_KEY = 'vasa_theme';
+  const saved = localStorage.getItem(THEME_KEY);
+  if (saved === 'dark') {
+    document.documentElement.classList.add('dark');
+    if (darkToggleBtn) darkToggleBtn.querySelector('.dot').style.transform = 'translateX(14px)';
+  }
+
+  // Toggle function
+  function toggleDark(){
+    document.documentElement.classList.toggle('dark');
+    const isDark = document.documentElement.classList.contains('dark');
+    try { localStorage.setItem(THEME_KEY, isDark ? 'dark' : 'light'); } catch(e){}
+    // animate dot
+    if (darkToggleBtn) {
+      const dot = darkToggleBtn.querySelector('.dot');
+      dot.style.transform = isDark ? 'translateX(14px)' : 'translateX(0)';
+    }
+  }
+
+  if (darkToggleBtn) darkToggleBtn.addEventListener('click', toggleDark);
+
+  // Sticky filter elevation on scroll
+  function onScroll(){
+    const offset = window.scrollY || document.documentElement.scrollTop;
+    if (filterWrapper) {
+      if (offset > 40) filterWrapper.classList.add('sticky-elevate');
+      else filterWrapper.classList.remove('sticky-elevate');
+    }
+    // small navbar shadow tweak
+    if (nav) {
+      if (offset > 6) nav.style.boxShadow = '0 10px 30px rgba(6,18,40,0.08)';
+      else nav.style.boxShadow = '';
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, {passive:true});
+  // initial
+  onScroll();
+
+  // Small accessibility: allow toggle with "d" key (optional)
+  window.addEventListener('keydown', (e) => {
+    if ((e.key === 'd' || e.key === 'D') && (e.ctrlKey || e.metaKey)) {
+      toggleDark();
+    }
+  });
+
+})();
+
+  </script>
+</body>
+</html>
